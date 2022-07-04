@@ -49,13 +49,12 @@
   var timeGone = getTimeSince(startDate);
   var daysLeftt = getDaysRemaining(endDate);
   var percentComplete = getPercentage(startDate, endDate);
-  var daysLeft = String.format("%02dh: %02dm: %02ds",
-                        daysLeftt.seconds / 3600,
-                        (daysLeftt.seconds % 3600) / 60,
-                        daysLeftt.seconds % 60;
+  var hoursleft = daysLeftt.seconds / 3600;
+  var minutesleft = daysLeftt.seconds/(3600*60);
+
   
   document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
 
   var countdown = document.getElementById('countdown');
-  countdown.innerHTML = daysLeft.toString() + ' hours left';
+  countdown.innerHTML = hoursLeft.toString() + ' hours' + minutesleft.toString() + 'minutes';
 </script>
