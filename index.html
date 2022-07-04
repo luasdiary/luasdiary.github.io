@@ -47,12 +47,18 @@
   var endDate = '2022-07-06 23:59:59 GMT+2';
 
   var timeGone = getTimeSince(startDate);
-  var daysLeft = getDaysRemaining(endDate);
-  var sinceText = humaniseSince(timeGone['weeks'], timeGone['days'])
+  var daysLeftt = getDaysRemaining(endDate);
   var percentComplete = getPercentage(startDate, endDate);
-
+  var daysLeft = println(
+        String.format("%02dh: %02dm: %02ds",
+                        daysLeftt.seconds / 3600,
+                        (daysLeftt.seconds % 3600) / 60,
+                        daysLeftt.seconds % 60
+                     )
+    );
+  
   document.getElementById('progress-bar').style.width = percentComplete.toString() + '%';
 
   var countdown = document.getElementById('countdown');
-  countdown.innerHTML = sinceText + ', ' + daysLeft.toString() + ' hours left';
+  countdown.innerHTML = daysLeft.toString() + ' hours left';
 </script>
